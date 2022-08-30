@@ -1,0 +1,69 @@
+<div class="card">
+    <h5>Ajouter un évenement</h5>
+    <p>All input text components support floating labels by adding (<mark>.p-float-label</mark>) to wrapper class.</p>
+    <div class="grid p-fluid mt-3">
+        <div class="field col-12 md:col-4">
+            <p-dropdown [options]="ReferenceConventionArray" [(ngModel)]="ReferenceConventionValue"placeholder="Selectionner une convention" optionLabel="referenceconv" [showClear]="true" [autoDisplayFirst]="false"></p-dropdown>
+        </div>
+            <div class="field col-12 md:col-4">
+            <span class="p-float-label">
+                <input type="text" id="CodeEvent"  pInputText [(ngModel)]="CodeEventValue">
+                <label for="CodeEvent">Code Evenement</label>
+            </span>
+            </div>
+        <div class="field col-12 md:col-4">
+            <span class="p-float-label">
+                <p-autoComplete inputId="autocomplete" [(ngModel)]="AssociationValue" [suggestions]="filteredAssociation"
+                (completeMethod)="searchCountry($event)" field="libelle"></p-autoComplete>
+                <label for="autocomplete">Association</label>
+            </span>
+        </div>
+
+        <div class="field col-12 md:col-4">
+            <span class="p-float-label">
+                <input type="text" id="Localisation"  pInputText [(ngModel)]="LocalisationValue">
+                <label for="Localisation">Localisation</label>
+            </span>
+
+        </div>
+        <div class="field col-12 md:col-4">
+            <span class="p-float-label">
+                <p-calendar inputId="datedeb" [(ngModel)]="DateDebValue"></p-calendar>
+                <label for="datedeb">Date Debut</label>
+            </span>
+        </div> <div class="field col-12 md:col-4">
+            <span class="p-float-label">
+                <p-calendar inputId="datefin" [(ngModel)]="DateFinValue"></p-calendar>
+                <label for="datefin">Date Fin</label>
+            </span>
+        </div>
+        <div class="field col-12 md:col-4">
+            <span class="p-float-label">
+                <p-inputNumber inputId="prix" [(ngModel)]="PrixValue"></p-inputNumber>
+                <label for="prix">Prix</label>
+            </span>
+        </div>
+        <div class="field col-12 md:col-4">
+            <span class="p-float-label">
+                <p-inputNumber inputId="places" [(ngModel)]="PlacesValue"></p-inputNumber>
+                <label for="places">Places</label>
+            </span>
+        </div>
+        <div class="field col-12 md:col-4">
+            <span class="p-float-label">
+                <p-inputNumber inputId="promotion" [(ngModel)]="PromotionValue"></p-inputNumber>
+                <label for="promotion">Promotion</label>
+            </span>
+        </div>
+        <div class="field col-12 md:col-4">
+            <span class="p-float-label">
+                <textarea inputId="Description" rows="3" cols="30" [(ngModel)]="DescriptionValue" pInputTextarea></textarea>
+                <label for="Description">Description</label>
+            </span>
+        </div>
+        <div class="field col-12">
+            <p-button label="Ajouter"  type="submit" (onClick)="AddEvent()"></p-button>
+        </div>
+    </div>
+    <p-toast key="SS" position="top-right"></p-toast>
+</div>

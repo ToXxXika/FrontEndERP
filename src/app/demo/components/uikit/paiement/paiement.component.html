@@ -1,0 +1,140 @@
+<div class="grid">
+	<div class="col-12 md:col-9">
+    <div class="card">
+      <div  style="display: block"></div>
+        <p-toast key="SS" position="top-right"></p-toast>
+        <p-steps [model]="items" [(activeIndex)]="next" [readonly]="true"></p-steps>
+    </div>
+
+        <div class="card">
+            <div id="divc" style="display: block">
+            <div class="p-fluid field" >
+             <h3>Personal Information </h3>
+             <h6>Entrer vos informations personnels</h6>
+             <label for="Nom">Nom</label>
+             <input pInputText id="Nom" type="text" [(ngModel)]="NomValue" [disabled]="TextDisabled" required >
+
+            </div>
+            <div class="p-fluid field">
+                <label for="Prenom">Prenom</label>
+                <input pInputText id="Prenom" type="text" [(ngModel)]="PrenomValue" [disabled]="TextDisabled" required >
+
+
+            </div>
+            <div class="p-fluid field">
+                <label for="Cin">Cin</label>
+                <input pInputText id="Cin" type="text" [(ngModel)]="CinValue" (focusout)="testCin()">
+            </div>
+                <p-button type="submit" label="Next" icon="pi pi-arrow-right" (onClick)="hideDiv()"></p-button>
+            </div>
+<!--------------------------------------------------------------------------->
+            <div id="c1" style="display: none">
+             <h3>Evenements</h3>
+             <h6>Choisir un evenement</h6>
+                <p-dataView #dv [value]="EventsArray" [paginator]="true" [rows]="3" filterBy="codevenement"  layout="list">
+                <ng-template let-event pTemplate="listItem">
+                    <div class="col-12">
+                        <div class="flex flex-column md:flex-row align-items-center p-3 w-full">
+                            <img [src]="'assets/black-watch.jpg'" alt="test" class="my-4 md:my-0 w-9 md:w-10rem shadow-2 mr-5"/>
+                            <div class="flex-1 text-center md:text-left">
+                                <div class="font-bold text-2xl">{{event["description"]}}</div>
+                                <div class="mb-3">{{event["codevenement"]}}</div>
+                                <!--	<p-rating [ngModel]="product.rating" [readonly]="true" [cancel]="false"></p-rating>-->
+                                <div class="flex align-items-center mt-2">
+                                    <i class="pi pi-tag mr-2"></i>
+                                    <span class="font-semibold">{{event["localisation"]}}</span>
+                                </div>
+                            </div>
+                            <div class="flex flex-row md:flex-column justify-content-between w-full md:w-auto align-items-center md:align-items-end mt-5 md:mt-0">
+                                <span class="text-2xl font-semibold mb-2 align-self-center md:align-self-end">${{event["detailevenementByDetails"]["prix"]}}</span>
+                                <p-button icon="pi pi-shopping-cart" label="Participer" (onClick)="DialogState(event)" [disabled]="verification(event)" class="mb-2"></p-button>
+                                <!--<span [class]="'product-badge status-' + product.inventoryStatus.toLowerCase()">{{product.inventoryStatus}}</span> -->
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+                </p-dataView>
+            </div>
+            <p-dialog header="Confirmation" [visible]="DialogDisplay">
+                <p>Combien de places allez vous réserver ?</p>
+                <ng-template pTemplate="footer">
+                    <p-inputNumber [(ngModel)]="places" ></p-inputNumber>
+                    <p-button icon="pi pi-check" label="Confirmer" (onClick)="Participate()"></p-button>
+                </ng-template>
+
+            </p-dialog>
+        </div>
+	</div>
+</div>
+<div style="display: none">
+    <body id="element">
+    <header>
+        <h1>FACTURE
+            <h2>Agil</h2>
+        </h1>
+    </header>
+    <section class="flex">
+        <dl>
+            <dt>Facture #</dt>
+            <dd>{{GeneratedRandomFacture}}</dd>
+            <dt>Date de facturation</dt>
+            <dd>{{SystemDate}}</dd>
+        </dl>
+    </section>
+    <section class="flex">
+        <dl class="bloc">
+            <dt>Facturé à:</dt>
+            <dd>
+                SNDP Corporation<br>
+                Centre Urbain Nord<br>
+                Charguia, Tunis
+                <dl>
+                    <dt>Adhérent</dt>
+                    <dd>{{NomValue}} {{PrenomValue}}</dd>
+                    <dt>Cin</dt>
+                    <dd>{{CinValue}}</dd>
+                    <dt>Email</dt>
+                    <dd>{{EmailValue}}</dd>
+                </dl>
+            </dd>
+        </dl>
+        <dl class="bloc">
+            <dt>Description de Evenement:</dt>
+            <dd>{{DescrptionEvenementValue}}</dd>
+            <dt>Période totale:</dt>
+            <dd>de {{DateDeb}} jusqu {{DateFin}}</dd>
+        </dl>
+    </section>
+    <table>
+        <thead>
+        <tr>
+            <th>Période</th>
+            <th>Description</th>
+            <th>Heures</th>
+            <th>Taux</th>
+            <th>Montant</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>{{DateDeb}} a {{DateFin}}</td>
+            <td>{{DescrptionEvenementValue}}</td>
+            <td>24&#8202;h</td>
+            <td>20&#8202;$/h</td>
+            <td>480&#8202;$</td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+            <td colspan="3">− Faire les chèques payable au nom de {{NomValue}} −</td>
+            <td>Total:</td>
+            <td>480&#8202;$</td>
+        </tr>
+        </tfoot>
+    </table>
+    <footer>
+        <p>SNDP Corporation - AGIL | <a href="https://www.agil.com.tn">Agil.com.tn</a></p>
+        <p>Société Nationale de Distribution des Pétroles AGIL. S.A.</p>
+    </footer>
+    </body>
+</div>

@@ -1,0 +1,76 @@
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>Facture </title>
+    <link href="https://fonts.googleapis.com/css?family=Nunito:300|Raleway:200,300" rel="stylesheet" type="text/css"/>
+</head>
+<body id="element">
+<header>
+    <h1>FACTURE
+        <h2>Agil</h2>
+    </h1>
+</header>
+<section class="flex">
+    <dl>
+        <dt>Facture #</dt>
+        <dd>{{GeneratedRandomFacture}}</dd>
+        <dt>Date de facturation</dt>
+        <dd>{{SystemDate}}</dd>
+    </dl>
+</section>
+<section class="flex">
+    <dl class="bloc">
+        <dt>Facturé à:</dt>
+        <dd>
+            SNDP Corporation<br>
+            Centre Urbain Nord<br>
+            Charguia, Tunis
+            <dl>
+                <dt>Adhérent</dt>
+                <dd>{{Nom}} {{Prenom}}</dd>
+                <dt>Cin</dt>
+                <dd>{{Cin}}</dd>
+                <dt>Email</dt>
+                <dd>{{Email}}</dd>
+            </dl>
+        </dd>
+    </dl>
+    <dl class="bloc">
+        <dt>Description de Evenement:</dt>
+        <dd>Développement AIR</dd>
+        <dt>Période totale:</dt>
+        <dd>24 Mai au 2 Juin 2014</dd>
+    </dl>
+</section>
+<table>
+    <thead>
+    <tr>
+        <th>Période</th>
+        <th>Description</th>
+        <th>Heures</th>
+        <th>Taux</th>
+        <th>Montant</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>24 Mai au 2 Juin</td>
+        <td>Dévelopement du jeu Tomatina</td>
+        <td>24&#8202;h</td>
+        <td>20&#8202;$/h</td>
+        <td>480&#8202;$</td>
+    </tr>
+    </tbody>
+    <tfoot>
+    <tr>
+        <td colspan="3">− Faire les chèques payable au nom de moi −</td>
+        <td>Total:</td>
+        <td>480&#8202;$</td>
+    </tr>
+    </tfoot>
+</table>
+<footer>
+    <p>SNDP Corporation - AGIL | <a href="https://www.agil.com.tn">Agil.com.tn</a></p>
+    <p>Société Nationale de Distribution des Pétroles AGIL. S.A.</p>
+</footer>
+</body>
